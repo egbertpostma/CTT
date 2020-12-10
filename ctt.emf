@@ -1,0 +1,70 @@
+@namespace(uri="ctt", prefix="")
+package ctt;
+
+class TaskModel {
+    ref Task[1] root;
+	val Task[+] tasks;
+	attr String name;
+}
+
+abstract class Task {
+    id attr String ~id;
+	attr String name;
+	
+	val TemporalOperator operator;
+
+	ref Task[*]#parent subtasks;
+	ordered ref Task#subtasks parent;
+	
+	attr Integer min;
+	attr Integer max;
+	
+	attr Boolean iterative;
+}
+
+class UserTask extends Task {
+}
+
+class ApplicationTask extends Task {
+}
+
+class InteractionTask extends Task {
+}
+
+class AbstractionTask extends Task {
+}
+
+class NullTask extends Task {
+}
+
+abstract class TemporalOperator {
+
+}
+
+class ChoiceOperator extends TemporalOperator {
+}
+
+class OrderIndependenceOperator extends TemporalOperator {
+}
+
+class InterleavingOperator extends TemporalOperator {
+}
+
+class SynchronizationOperator extends TemporalOperator {
+}
+
+class ParallelOperator extends TemporalOperator {
+}
+
+class DisablingOperator extends TemporalOperator {
+}
+
+class SequentialEnablingInfoOperator extends TemporalOperator {
+}
+
+class SequentialEnablingOperator extends TemporalOperator {
+}
+
+class SuspendResumeOperator extends TemporalOperator {
+}
+
